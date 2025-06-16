@@ -9,6 +9,20 @@ import (
 	"github.com/joho/godotenv"
 )
 
+func NewRandomPrivateKey() {
+	privateKeyStr, err := solana.NewRandomPrivateKey()
+	if err != nil {
+		fmt.Println("生成随机私钥失败: %w", err)
+	}
+
+	publicKey := privateKeyStr.PublicKey()
+
+	fmt.Println("privateKeyByte", []byte(privateKeyStr))
+	fmt.Println("publicKeyStr  ", privateKeyStr.String())
+	fmt.Println("publicKey", publicKey)
+
+}
+
 // GetKeypair 从 .env 文件中读取私钥，并返回私钥和公钥（地址）
 func GetKeypair(filenames ...string) (string, string) {
 	// 加载 .env 文件
@@ -31,20 +45,8 @@ func GetKeypair(filenames ...string) (string, string) {
 	// 获取公钥（地址）
 	publicKey := privateKey.PublicKey()
 	fmt.Printf("Public Key (Address): %s\n", publicKey)
+	fmt.Printf("Private Key ([]byte): %v\n", []byte(privateKey))
+	fmt.Printf("Private Key: %s\n", privateKey)
 
 	return privateKey.String(), publicKey.String()
-}
-
-func NewRandomPrivateKey() {
-	privateKeyStr, err := solana.NewRandomPrivateKey()
-	if err != nil {
-		fmt.Println("生成随机私钥失败: %w", err)
-	}
-
-	publicKey := privateKeyStr.PublicKey()
-
-	fmt.Println("privateKeyByte", []byte(privateKeyStr))
-	fmt.Println("publicKeyStr  ", privateKeyStr.String())
-	fmt.Println("publicKey", publicKey)
-
 }

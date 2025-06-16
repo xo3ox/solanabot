@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -12,8 +11,5 @@ func TestNewRandomPrivateKey(t *testing.T) {
 }
 
 func TestGetKeypair(t *testing.T) {
-	privateKey, publicKey := GetKeypair("../.env")
-	fmt.Println("Private Key:", privateKey)
-	fmt.Println("Private Key:", []byte(privateKey))
-	fmt.Println("Public Key:", publicKey)
+	_, _ = GetKeypair("../.env")
 }

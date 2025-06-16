@@ -18,7 +18,7 @@ func NewRandomPrivateKey() {
 	publicKey := privateKeyStr.PublicKey()
 
 	fmt.Println("privateKeyByte", []byte(privateKeyStr))
-	fmt.Println("publicKeyStr  ", privateKeyStr.String())
+	fmt.Println("privateKeyStr  ", privateKeyStr.String())
 	fmt.Println("publicKey", publicKey)
 
 }

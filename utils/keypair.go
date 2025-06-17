@@ -24,7 +24,7 @@ func NewRandomPrivateKey() {
 }
 
 // GetKeypair 从 .env 文件中读取私钥，并返回私钥和公钥（地址）
-func GetKeypair(filenames ...string) (string, string) {
+func GetKeypair(filenames ...string) solana.PrivateKey {
 	// 加载 .env 文件
 	if err := godotenv.Load(filenames...); err != nil {
 		log.Fatal("读取 .env 文件失败")
@@ -48,5 +48,5 @@ func GetKeypair(filenames ...string) (string, string) {
 	fmt.Printf("Private Key ([]byte): %v\n", []byte(privateKey))
 	fmt.Printf("Private Key: %s\n", privateKey)
 
-	return privateKey.String(), publicKey.String()
+	return privateKey
 }

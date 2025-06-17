@@ -11,5 +11,5 @@ func TestNewRandomPrivateKey(t *testing.T) {
 }
 
 func TestGetKeypair(t *testing.T) {
-	_, _ = GetKeypair("../.env")
+	_ = GetKeypair("../.env")
 }
